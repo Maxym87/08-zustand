@@ -26,6 +26,19 @@ export async function generateMetadata({
   return {
     title: `Notes: ${tag}`,
     description: `Browse ${tag} notes in NoteHub`,
+    openGraph: {
+      title: `Notes: ${tag}`,
+      description: `Browse ${tag} notes in NoteHub`,
+      url: `https://08-zustand-chi-three.vercel.app/notes/filter/${rawTag}`,
+      images: [
+        {
+          url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+          width: 1200,
+          height: 630,
+          alt: `NoteHub notes filtered by ${tag}`,
+        },
+      ],
+    },
   };
 }
 
