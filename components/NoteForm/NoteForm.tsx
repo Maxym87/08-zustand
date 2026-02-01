@@ -5,7 +5,7 @@ import { useId } from "react";
 import { useRouter } from "next/navigation";
 import type { NewNote } from "../../types/note";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useNoteDraftStore } from "@/store/noteStore";
+import { useNoteDraftStore } from "@/lib/store/noteStore";
 import { addNote } from "@/lib/api";
 
 const tags = ["Todo", "Work", "Personal", "Meeting", "Shopping"];
