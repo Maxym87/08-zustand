@@ -88,7 +88,7 @@ export default function NoteForm() {
           </select>
         }
       </div>
-      <div className={css.action}>
+      <div className={css.actions}>
         <button
           onClick={handleCancel}
           className={css.cancelButton}
