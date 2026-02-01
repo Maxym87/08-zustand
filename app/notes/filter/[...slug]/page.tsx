@@ -4,12 +4,30 @@ import {
   dehydrate,
 } from "@tanstack/react-query";
 
+import { Metadata } from "next";
+
 import { fetchNotes } from "@/lib/api";
 import NotesClient from "./Notes.client";
 
 type NotesByIdProps = {
   params: Promise<{ slug: string[] }>;
 };
+
+export async function generateMetadata({
+  params,
+}: NotesByIdProps): Promise<Metadata> {
+  const { slug } = await params;
+
+  const rawTag = slug[0];
+  const tag =
+    rawTag === "all"
+      ? "All notes"
+      : rawTag.charAt(0).toUpperCase() + rawTag.slice(1);
+  return {
+    title: `Notes: ${tag}`,
+    description: `Browse ${tag} notes in NoteHub`,
+  };
+}
 
 const NotesByTag = async ({ params }: NotesByIdProps) => {
   const { slug } = await params;
