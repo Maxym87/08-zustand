@@ -27,12 +27,12 @@ export const fetchNotes = async (
     params.search = query;
   }
 
-  const response = await axios.get<FetchNotesResponse>(`/notes`, {
+  const { data } = await axios.get<FetchNotesResponse>(`/notes`, {
     headers: { Authorization: `Bearer ${token}` },
     params,
   });
 
-  return response.data;
+  return data;
 };
 
 export const fetchNoteById = async (id: string) => {
@@ -45,19 +45,19 @@ export const fetchNoteById = async (id: string) => {
 };
 
 export const addNote = async (noteData: NewNote): Promise<Note> => {
-  const res = await axios.post<Note>("/notes", noteData, {
+  const { data } = await axios.post<Note>("/notes", noteData, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
-  return res.data;
+  return data;
 };
 
 export const deleteNote = async (noteId: string): Promise<Note> => {
-  const res = await axios.delete<Note>(`/notes/${noteId}`, {
+  const { data } = await axios.delete<Note>(`/notes/${noteId}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
-  return res.data;
+  return data;
 };
